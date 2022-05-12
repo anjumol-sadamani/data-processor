@@ -43,8 +43,6 @@ class ApplicationIntegrationTests {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	private String URL = "/news/articles?source_name=source";
-
 	@BeforeAll
 	static void setUp() throws IOException {
 		mockWebServer = new MockWebServer();
@@ -72,14 +70,19 @@ class ApplicationIntegrationTests {
 		Thread.sleep(5000);
 		ResponseEntity<List<NewsArticle>> responseEntity =
 				restTemplate.exchange(
-						URL,
+						"/news/articles?source_name=source",
 						HttpMethod.GET,
 						null,
 						new ParameterizedTypeReference<List<NewsArticle>>() {}
 				);
-		var actualResp = responseEntity.getBody();
+		var getResp = responseEntity.getBody();
+		var deleteRes
+				= restTemplate.exchange("/news/articles?source_name=source", HttpMethod.DELETE, null, String.class);
+
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-		assertTrue(actualResp.size() > 0);
-		assertEquals("source", actualResp.get(0).getSourceName());
+		assertTrue(getResp.size() > 0);
+		assertEquals("source", getResp.get(0).getSourceName());
+		assertEquals(HttpStatus.ACCEPTED, deleteRes.getStatusCode());
+		assertEquals("Deleted 1 records", deleteRes.getBody());
 	}
 }

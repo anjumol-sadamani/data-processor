@@ -46,7 +46,7 @@ public class NewsController {
         String response = "No records found to be deleted";
         if (affectedRowsCount != 0)
             response = "Deleted " + affectedRowsCount + " records";
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }
 
 }
