@@ -23,6 +23,7 @@ import static com.sample.dataprocessor.util.Constants.SCHEDULED_POOL_SIZE;
 
 
 @Configuration
+@EnableScheduling
 public class Config {
 
     @Value("${request.time.out}")
@@ -36,11 +37,11 @@ public class Config {
         return new ArrayBlockingQueue<>(QUEUE_SIZE);
     }
 
-    @Bean
-    @Qualifier("scheduledThreadPool")
-    public ScheduledExecutorService scheduledThreadPool() {
-            return Executors.newScheduledThreadPool(SCHEDULED_POOL_SIZE);
-    }
+    // @Bean
+    // @Qualifier("scheduledThreadPool")
+    // public ScheduledExecutorService scheduledThreadPool() {
+    //         return Executors.newScheduledThreadPool(SCHEDULED_POOL_SIZE);
+    // }
 
     @Bean
     @Qualifier("singleThreadPool")

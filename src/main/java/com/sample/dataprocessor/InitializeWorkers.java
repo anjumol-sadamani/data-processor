@@ -28,16 +28,16 @@ public class InitializeWorkers implements ApplicationRunner {
     private NewsArticleConsumer newsArticleConsumer;
     @Autowired
     private NewsArticleProducer newsArticleProducer;
-    @Autowired
-    @Qualifier("scheduledThreadPool")
-    private ScheduledExecutorService scheduledExecutorService;
+    // @Autowired
+    // @Qualifier("scheduledThreadPool")
+    // private ScheduledExecutorService scheduledExecutorService;
     @Autowired
     @Qualifier("singleThreadPool")
     private ExecutorService singleExecutorService;
 
     @Override
     public void run(ApplicationArguments args) {
-        scheduledExecutorService.scheduleAtFixedRate(newsArticleProducer, INITIAL_DELAY, interval, TimeUnit.SECONDS);
+        // scheduledExecutorService.scheduleAtFixedRate(newsArticleProducer, INITIAL_DELAY, interval, TimeUnit.SECONDS);
         singleExecutorService.submit(newsArticleConsumer);
         singleExecutorService.submit(()-> scheduledExecutorService.shutdownNow());
     }

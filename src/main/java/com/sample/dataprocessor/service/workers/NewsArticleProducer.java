@@ -19,7 +19,7 @@ import java.util.concurrent.BlockingQueue;
  */
 @Component
 @Scope("prototype")
-public class NewsArticleProducer implements Runnable {
+public class NewsArticleProducer {
 
     Logger logger = LoggerFactory.getLogger(NewsArticleProducer.class);
     @Value("${api.uri}")
@@ -34,7 +34,6 @@ public class NewsArticleProducer implements Runnable {
         this.dataQueue = dataQueue;
     }
 
-    @Override
     public void run() {
         String uri = String.format(endpoint, key);
         logger.info("Scheduler called thread : {} @ {}", Thread.currentThread().getName(), Instant.now());
