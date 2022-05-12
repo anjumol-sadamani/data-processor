@@ -1,8 +1,10 @@
 package com.sample.dataprocessor.configuration.rules;
 
 import com.sample.dataprocessor.dto.Article;
+import com.sample.dataprocessor.rule.TrimDescriptionRule;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +15,7 @@ class TrimDescriptionRuleTest {
     void apply() {
         var article = new Article(
                 null,
-                "author", "title", longText, new Date(), "content"
+                "author", "title", longText, LocalDateTime.now(), "content"
         );
         TrimDescriptionRule descriptionRule = new TrimDescriptionRule();
         var actualArticle = descriptionRule.apply(article);

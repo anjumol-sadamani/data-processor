@@ -1,10 +1,10 @@
 package com.sample.dataprocessor.service.workers;
 
 
-import com.sample.dataprocessor.configuration.Constants;
-import com.sample.dataprocessor.configuration.rules.AddSourceRule;
-import com.sample.dataprocessor.configuration.rules.MapToNewsArticle;
-import com.sample.dataprocessor.configuration.rules.TrimDescriptionRule;
+import com.sample.dataprocessor.util.Constants;
+import com.sample.dataprocessor.rule.AddSourceRule;
+import com.sample.dataprocessor.rule.MapToNewsArticle;
+import com.sample.dataprocessor.rule.TrimDescriptionRule;
 import com.sample.dataprocessor.dto.Article;
 import com.sample.dataprocessor.dto.News;
 import com.sample.dataprocessor.entity.NewsArticle;
@@ -33,13 +33,13 @@ public class NewsArticleConsumer implements Runnable {
             new TrimDescriptionRule()
                     .andThen(new AddSourceRule())
                     .andThen(new MapToNewsArticle());
-
+    private final BlockingQueue<News> dataQueue;
+    private final Processor<News, Article, NewsArticle> processor;
     @Autowired
-    private BlockingQueue<News> dataQueue;
-
-    @Autowired
-    private Processor<News, Article, NewsArticle> processor;
-
+    public NewsArticleConsumer(BlockingQueue<News> dataQueue, Processor<News, Article, NewsArticle> processor) {
+        this.dataQueue = dataQueue;
+        this.processor = processor;
+    }
     @Override
     public void run() {
 

@@ -22,16 +22,17 @@ import java.util.concurrent.BlockingQueue;
 public class NewsArticleProducer implements Runnable {
 
     Logger logger = LoggerFactory.getLogger(NewsArticleProducer.class);
-
     @Value("${api.uri}")
     private String endpoint;
     @Value("${api.key}")
     private String key;
-
+    private final DataCollector dataCollector;
+    private final BlockingQueue<News> dataQueue;
     @Autowired
-    private DataCollector dataCollector;
-    @Autowired
-    private BlockingQueue<News> dataQueue;
+    public NewsArticleProducer(DataCollector dataCollector, BlockingQueue<News> dataQueue){
+        this.dataCollector = dataCollector;
+        this.dataQueue = dataQueue;
+    }
 
     @Override
     public void run() {

@@ -40,15 +40,4 @@ public class NewsArticle {
         this.createdDate = LocalDateTime.now();
     }
 
-    public NewsArticle(String sourceId, String sourceName, String author,
-                       String title, String description, String content, LocalDateTime createdDate) {
-        this.sourceId = sourceId;
-        this.sourceName = sourceName;
-        this.author = author;
-        this.title = title;
-        this.description = description;
-        this.content = content;
-        this.createdDate = createdDate;
-    }
-
 }

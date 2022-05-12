@@ -18,8 +18,8 @@ import reactor.netty.http.client.HttpClient;
 import java.time.Duration;
 import java.util.concurrent.*;
 
-import static com.sample.dataprocessor.configuration.Constants.QUEUE_SIZE;
-import static com.sample.dataprocessor.configuration.Constants.SCHEDULED_POOL_SIZE;
+import static com.sample.dataprocessor.util.Constants.QUEUE_SIZE;
+import static com.sample.dataprocessor.util.Constants.SCHEDULED_POOL_SIZE;
 
 
 @Configuration

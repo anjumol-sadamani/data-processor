@@ -13,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,11 +26,11 @@ import static org.mockito.ArgumentMatchers.eq;
 class NewsArticleProducerTest {
 
     @Mock
-    DataCollector dataCollector;
+    private DataCollector dataCollector;
     @Mock
-    BlockingQueue<News> dataQueue;
+    private BlockingQueue<News> dataQueue;
     @InjectMocks
-    NewsArticleProducer articleProducer = new NewsArticleProducer();
+    private NewsArticleProducer articleProducer;
 
     @BeforeAll
     public void setUp() {
@@ -40,7 +41,7 @@ class NewsArticleProducerTest {
     @Test
     void runTest() throws InterruptedException {
         var articles = List.of(new Article(null, "author", "title",
-                "description", new Date(), "content"));
+                "description", LocalDateTime.now(), "content"));
         var news = new News("ok", 2, articles);
         Mockito.when(dataCollector.fetchData(eq("endpoint key"), Mockito.any())).thenReturn(news);
 

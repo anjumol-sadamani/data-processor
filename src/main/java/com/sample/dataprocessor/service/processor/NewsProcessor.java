@@ -18,11 +18,12 @@ import java.util.stream.Collectors;
  */
 @Service
 public class NewsProcessor implements Processor<News, Article, NewsArticle> {
-
     Logger logger = LoggerFactory.getLogger(NewsProcessor.class);
-
+    private final NewsArticleRepository articleRepository;
     @Autowired
-    private NewsArticleRepository articleRepository;
+    public NewsProcessor(NewsArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
 
     @Override
     public void processNews(News news, Function<Article, NewsArticle> rules) {

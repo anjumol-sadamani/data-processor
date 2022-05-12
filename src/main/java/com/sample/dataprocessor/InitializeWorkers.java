@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static com.sample.dataprocessor.configuration.Constants.INITIAL_DELAY;
+import static com.sample.dataprocessor.util.Constants.INITIAL_DELAY;
 
 /**
  * Initializer class for the producers and consumer

@@ -24,7 +24,7 @@ class NewsArticleServiceTest {
     @Mock
     private NewsArticleRepository articleRepository;
     @InjectMocks
-    private NewsArticleService articleService = new NewsArticleServiceImpl();
+    private NewsArticleServiceImpl articleService;
 
     @BeforeAll
     public void setUp() {
@@ -34,9 +34,8 @@ class NewsArticleServiceTest {
 
     @Test
     void getNewsData() {
-        var date = LocalDateTime.now();
-        var expectedList = List.of(new NewsArticle("demo-app","Demo App", "author",
-                "title","description", "content", date));
+        var expectedList = List.of(new NewsArticle(1l,"demo-app","Demo App", "author",
+                "title","description", "content",  LocalDateTime.now()));
         var pageable = PageRequest.of(0, 3);
         Mockito.when(articleRepository.findAllByOrderByCreatedDateDesc(pageable)).thenReturn(expectedList);
 

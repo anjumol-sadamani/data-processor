@@ -11,6 +11,5 @@ import java.util.List;
 public interface NewsArticleRepository extends PagingAndSortingRepository<NewsArticle, Long> {
 
     List<NewsArticle> findAllByOrderByCreatedDateDesc(Pageable pageable);
-
     Long deleteAllBySourceName(String name);
 }

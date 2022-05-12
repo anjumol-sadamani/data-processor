@@ -40,14 +40,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ApplicationIntegrationTests {
 	private static MockWebServer mockWebServer;
-
-	@Autowired
-	private NewsArticleRepository articleRepository;
-	@Autowired
-	private BlockingQueue<News> dataQueue;
-	@Autowired
-	private NewsArticleService newsArticleService;
-
 	@Autowired
 	private TestRestTemplate restTemplate;
 

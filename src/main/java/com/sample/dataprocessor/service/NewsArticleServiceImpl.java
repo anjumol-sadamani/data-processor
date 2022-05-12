@@ -20,8 +20,12 @@ public class NewsArticleServiceImpl implements NewsArticleService {
     @Value("${fetch.count.default}")
     private int defaultRowCount;
 
+    private final NewsArticleRepository articleRepository;
+
     @Autowired
-    private NewsArticleRepository articleRepository;
+    public NewsArticleServiceImpl(NewsArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
 
     @Override
     public List<NewsArticle> getNewsData(Integer limit) {

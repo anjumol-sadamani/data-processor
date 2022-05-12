@@ -1,7 +1,7 @@
 package com.sample.dataprocessor.service.processor;
 
-import com.sample.dataprocessor.configuration.rules.AddSourceRule;
-import com.sample.dataprocessor.configuration.rules.MapToNewsArticle;
+import com.sample.dataprocessor.rule.AddSourceRule;
+import com.sample.dataprocessor.rule.MapToNewsArticle;
 import com.sample.dataprocessor.dto.Article;
 import com.sample.dataprocessor.dto.News;
 import com.sample.dataprocessor.entity.NewsArticle;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -39,7 +38,7 @@ class NewsProcessorTest {
         var articles = List.of(new Article(null, "author", "title",
                 "description", null, "content"));
         var news = new News("ok", 2, articles);
-        NewsArticle newsArticle = new NewsArticle("data-processor-app", "Data-processor App", "author",
+        NewsArticle newsArticle = new NewsArticle(1l,"data-processor-app", "Data-processor App", "author",
                 "title", "description", "content", LocalDateTime.now());
         ArrayList<NewsArticle> expectedList = new ArrayList<>();
         expectedList.add(newsArticle);
