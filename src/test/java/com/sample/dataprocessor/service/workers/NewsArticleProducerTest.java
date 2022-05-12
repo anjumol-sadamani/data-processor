@@ -30,14 +30,13 @@ class NewsArticleProducerTest {
     @Mock
     private BlockingQueue<News> dataQueue;
     @InjectMocks
-    private NewsArticleProducer articleProducer;
+    private NewsArticleProducer articleProducer = new NewsArticleProducer();
 
     @BeforeAll
     public void setUp() {
         ReflectionTestUtils.setField(articleProducer, "endpoint", "endpoint %s");
         ReflectionTestUtils.setField(articleProducer, "key", "key");
     }
-
     @Test
     void runTest() throws InterruptedException {
         var articles = List.of(new Article(null, "author", "title",

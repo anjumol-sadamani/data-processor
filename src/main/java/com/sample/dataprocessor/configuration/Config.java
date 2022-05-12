@@ -45,7 +45,6 @@ public class Config {
     @Bean
     @Qualifier("singleThreadPool")
     public ExecutorService fixedThreadPool() {
-
         return Executors.newSingleThreadExecutor();
     }
 

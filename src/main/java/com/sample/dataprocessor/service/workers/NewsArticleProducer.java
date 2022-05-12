@@ -26,13 +26,10 @@ public class NewsArticleProducer implements Runnable {
     private String endpoint;
     @Value("${api.key}")
     private String key;
-    private final DataCollector dataCollector;
-    private final BlockingQueue<News> dataQueue;
     @Autowired
-    public NewsArticleProducer(DataCollector dataCollector, BlockingQueue<News> dataQueue){
-        this.dataCollector = dataCollector;
-        this.dataQueue = dataQueue;
-    }
+    private  DataCollector dataCollector;
+    @Autowired
+    private  BlockingQueue<News> dataQueue;
 
     @Override
     public void run() {
