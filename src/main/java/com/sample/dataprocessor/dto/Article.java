@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,6 +15,6 @@ public class Article {
     private String author;
     private String title;
     private String description;
-    private Date publishedAt;
+    private LocalDateTime publishedAt;
     private String content;
 }

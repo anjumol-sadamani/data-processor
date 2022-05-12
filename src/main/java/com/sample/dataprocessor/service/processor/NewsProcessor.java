@@ -26,7 +26,6 @@ public class NewsProcessor implements Processor<News, Article, NewsArticle> {
 
     @Override
     public void processNews(News news, Function<Article, NewsArticle> rules) {
-        //TODO transactional
         List<NewsArticle> articles =
                 news.getArticles()
                         .parallelStream()

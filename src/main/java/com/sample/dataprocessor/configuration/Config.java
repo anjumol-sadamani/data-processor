@@ -14,8 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
-import reactor.netty.tcp.TcpClient;
-
 
 import java.time.Duration;
 import java.util.concurrent.*;
@@ -29,6 +27,9 @@ public class Config {
 
     @Value("${request.time.out}")
     private int timeOut;
+
+    @Value("${base.url}")
+    private String baseUrl;
 
     @Bean
     public BlockingQueue<News> getDataQueue() {
@@ -44,6 +45,7 @@ public class Config {
     @Bean
     @Qualifier("singleThreadPool")
     public ExecutorService fixedThreadPool() {
+
         return Executors.newSingleThreadExecutor();
     }
 
@@ -62,7 +64,7 @@ public class Config {
                 .defaultCookie("cookieKey", "cookieValue")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
-                .baseUrl("http://newsapi.org/")
+                .baseUrl(baseUrl)
                 .build();
     }
 }

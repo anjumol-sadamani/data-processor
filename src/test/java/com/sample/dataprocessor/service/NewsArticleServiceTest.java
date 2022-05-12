@@ -38,7 +38,7 @@ class NewsArticleServiceTest {
         var expectedList = List.of(new NewsArticle("demo-app","Demo App", "author",
                 "title","description", "content", date));
         var pageable = PageRequest.of(0, 3);
-        Mockito.when(articleRepository.findAllByOrderByCreatedDateDesc(Mockito.eq(pageable))).thenReturn(expectedList);
+        Mockito.when(articleRepository.findAllByOrderByCreatedDateDesc(pageable)).thenReturn(expectedList);
 
         var newsArticles = articleService.getNewsData(3);
 

@@ -18,11 +18,11 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.BlockingQueue;
 import java.util.function.Function;
 
-///**
-// * Runnable task for consuming {@link com.example.demo.dto.News} from the Queue.
-// * Rules are build and passed to {@link com.example.demo.service.processor.NewsProcessor#process(News, Function)}
-// * along with the {@link com.example.demo.dto.News} object
-// */
+/**
+ * Runnable task for consuming {@link com.sample.dataprocessor.dto.News} from the Queue.
+ * Rules are build and passed to {@link com.sample.dataprocessor.service.processor.NewsProcessor#processNews(News, Function)}
+ * along with the {@link com.sample.dataprocessor.dto.News} object
+ */
 @Component
 @Scope("prototype")
 public class NewsArticleConsumer implements Runnable {

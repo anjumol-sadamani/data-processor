@@ -3,7 +3,6 @@ package com.sample.dataprocessor.controller;
 import com.sample.dataprocessor.entity.NewsArticle;
 import com.sample.dataprocessor.exception.BadRequestException;
 import com.sample.dataprocessor.service.NewsArticleService;
-import com.sample.dataprocessor.service.NewsArticleServiceImpl;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
